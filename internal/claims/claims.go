@@ -17,6 +17,12 @@ type Claim struct {
 	ResolvedAt *time.Time
 }
 
+type Resolution struct {
+	ClaimID   string
+	Amount    int64
+	Reference string
+}
+
 func Open(c Claim) error {
 	if c.ID == "" || c.TenantID == "" || c.ShipmentID == "" || c.FiledBy == "" || strings.TrimSpace(c.Reason) == "" || c.FiledAt.IsZero() {
 		return domain.ErrInvalid
